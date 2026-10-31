@@ -71,6 +71,16 @@
         }
       }
     },
+    "actor": {
+      "description": "The user, role, or process that issued or approved the remediation command. For a <code>Restore</code> activity that reverses an earlier <code>Isolate</code> or <code>Evict</code>, this is the account that decided the system may run again, which can differ from the account that applied the containment.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "authorizations": {
+      "description": "The authorization outcome and the policy under which the remediation command was permitted. Use it to record the grant the <code>actor</code> acted on, for example an incident-response runbook policy or a two-person approval rule, so a reviewer can check that the command was authorized before it ran.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "command_uid": {
       "description": "The unique identifier of the remediation command that pertains to this event.",
       "group": "primary",
@@ -79,6 +89,11 @@
     "countermeasures": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "related_events": {
+      "description": "Events and records this remediation acts on or depends on. For a <code>Restore</code> activity, include the <code>Isolate</code> or <code>Evict</code> activity it reverses and any separate approval or decision record it relies on. Related events may or may not be OCSF events.",
+      "group": "context",
+      "requirement": "optional"
     },
     "remediation": {
       "group": "context",
